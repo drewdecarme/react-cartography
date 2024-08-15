@@ -1,10 +1,11 @@
-import React from "react";
+import React, { RefCallback } from "react";
 import { type ReactNode, useMemo } from "react";
 import { useMap, UseMapOptions } from "./map.useMap";
 import { Map } from "ol";
 
-export type MapContextType = {
-  map: Map;
+export type MapContextType<T extends HTMLElement = HTMLElement> = {
+  map: Map | undefined;
+  setMap: RefCallback<T>;
 };
 export const MapContext = React.createContext<MapContextType | null>(null);
 export type MapProviderProps = {
@@ -19,7 +20,7 @@ export function MapProvider<T extends HTMLElement>({
 
   const value = useMemo(
     () => ({
-      map: map.current,
+      map,
       setMap,
     }),
     [map, setMap]
