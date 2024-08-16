@@ -1,5 +1,6 @@
 {
-  "name": "react-cartography",
+  "name": "@react-cartography/base",
+  "private": true,
   "version": "0.0.0",
   "description": "A collection of react hooks and components to easily integrate different mapping libraries into your NextJS, Remix, Vite React app",
   "workspaces": {
@@ -19,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/drewdecarme/react-layers/issues"
   },
-  "homepage": "https://github.com/drewdecarme/react-layers#readme"
+  "homepage": "https://github.com/drewdecarme/react-layers#readme",
+  "dependencies": {
+    "@react-cartography/ol": "workspace:^"
+  }
 }

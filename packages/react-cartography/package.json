@@ -6,6 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "exports": {
+    "./ol": {
+      "default": "./ol.js",
+      "import": "./ol.js",
+      "node": "./ol.js",
+      "require": "./ol.js",
+      "types": "./ol.d.ts"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/drewdecarme/react-cartography.git"

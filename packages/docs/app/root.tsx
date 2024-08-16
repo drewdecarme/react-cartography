@@ -13,7 +13,7 @@ import {
 const globalCSS = css`
   padding: 0;
   margin: 0;
-
+  font-family: "Source Sans Pro", sans-serif;
   body {
     padding: 0;
     margin: 0;
@@ -23,7 +23,6 @@ const globalCSS = css`
 `;
 
 export const loader = async ({ context }: LoaderFunctionArgs) => {
-  console.log(context.cloudflare.env.MAPBOX_TOKEN);
   return json({
     ENV: {
       MAPBOX_TOKEN: context.cloudflare.env.MAPBOX_TOKEN,
@@ -39,6 +38,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin=""
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+          rel="stylesheet"
+        />
         <Meta />
         <Links />
       </head>

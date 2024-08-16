@@ -12,7 +12,7 @@ const mapCSS = css`
 `;
 
 export default function OpenLayersTileXYZ() {
-  const { setMap, map } = useMapContext();
+  const { ref, map } = useMapContext();
 
   useMapLayerVectorTile(map, {
     className: "vector-tiles",
@@ -24,5 +24,5 @@ export default function OpenLayersTileXYZ() {
     }),
   });
 
-  return <div ref={setMap} className={mapCSS} />;
+  return <div ref={ref} className={mapCSS} />;
 }

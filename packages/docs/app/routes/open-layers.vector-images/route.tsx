@@ -8,12 +8,12 @@ const mapCSS = css`
   position: relative;
 `;
 
-export default function OpenLayersVectorGeoJSON() {
-  const { setMap, map } = useMapContext();
+export default function OpenLayersVectorImages() {
+  const { ref, map } = useMapContext();
 
   useMapLayerVector(map, {
     className: "vector",
   });
 
-  return <div ref={setMap} className={mapCSS} />;
+  return <div ref={ref} className={mapCSS} />;
 }

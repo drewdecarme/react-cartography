@@ -10,7 +10,7 @@ const mapCSS = css`
 `;
 
 export default function OpenLayersIndex() {
-  const { setMap, map } = useMapContext();
+  const { ref, map } = useMapContext();
 
   useMapLayerTile(map, {
     className: "background",
@@ -19,5 +19,5 @@ export default function OpenLayersIndex() {
     }),
   });
 
-  return <div ref={setMap} className={mapCSS} />;
+  return <div ref={ref} className={mapCSS} />;
 }

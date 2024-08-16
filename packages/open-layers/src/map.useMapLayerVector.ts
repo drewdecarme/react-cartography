@@ -17,14 +17,11 @@ export type UseMapLayerVectorOptions<
   className: string;
 };
 
-export const useMapLayerVector = <
-  F extends FeatureLike,
-  V extends VectorSource<F>
->(
+export const useMapLayerVector = <F extends FeatureLike>(
   map: Map | undefined,
-  options: UseMapLayerVectorOptions<F, V>
+  options: UseMapLayerVectorOptions<F, VectorSource<F>>
 ) => {
-  const initLayerRef = useRef(new VectorLayer<V, F>(options));
+  const initLayerRef = useRef(new VectorLayer<VectorSource<F>, F>(options));
 
   /**
    * Get and/or add the layer to the map

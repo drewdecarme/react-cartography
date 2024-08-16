@@ -10,7 +10,7 @@ const mapCSS = css`
 `;
 
 export default function OpenLayersTileXYZ() {
-  const { setMap, map } = useMapContext();
+  const { ref, map } = useMapContext();
 
   useMapLayerTile(map, {
     className: "open-street-map",
@@ -19,5 +19,5 @@ export default function OpenLayersTileXYZ() {
     }),
   });
 
-  return <div ref={setMap} className={mapCSS} />;
+  return <div ref={ref} className={mapCSS} />;
 }
