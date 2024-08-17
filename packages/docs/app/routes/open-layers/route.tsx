@@ -1,41 +1,47 @@
 import { css } from "@linaria/core";
 import { MapProvider } from "@react-cartography/ol";
 import { Link, Outlet, useMatches } from "@remix-run/react";
-import { ReactNode } from "react";
+import { ModuleHandle } from "../../utils/createHandle";
 
 const layoutCSS = css`
   height: 100%;
   width: 100%;
   display: grid;
-  gap: 1rem;
   grid-template-columns: minmax(min-content, 300px) 1fr minmax(
       min-content,
-      300px
+      500px
     );
-  grid-template-rows: 1fr minmax(min-content, 300px);
-  grid-template-areas:
-    "pane-left main pane-right"
-    "footer footer footer";
+  grid-template-areas: "pane-left main pane-right";
 
   & > * {
     &:not(.main) {
-      padding: 1rem;
+      padding: 1rem 2rem;
+    }
+  }
+
+  .pane-left {
+    grid-area: pane-left;
+  }
+
+  .pane-right {
+    grid-area: pane-right;
+
+    p {
+      line-height: 1.5;
     }
   }
 `;
 
-type ModuleHandle = {
-  description: (() => ReactNode) | undefined;
-};
-
 export default function OpenLayers() {
   const matches = useMatches();
-  const description = matches.reduce<ModuleHandle["description"]>(
+  const routeDetails = matches.reduce<ModuleHandle | undefined>(
     (accum, match) => {
-      if (match.handle && (match.handle as ModuleHandle).description) {
-        return (match.handle as ModuleHandle).description as () => ReactNode;
+      if (!match.handle) return accum;
+      const handle = match.handle as ModuleHandle;
+      if (!handle.title || !handle.subTitle || !handle.description) {
+        return accum;
       }
-      return accum;
+      return handle;
     },
     undefined
   );
@@ -43,13 +49,13 @@ export default function OpenLayers() {
   return (
     <MapProvider>
       <div className={layoutCSS}>
-        <div style={{ gridArea: "pane-left" }}>
-          <h2>Layers</h2>
+        <div className="pane-left">
+          <h2>Layer Hook Abstractions</h2>
           <p>
             A layer is a visual representation of data from a source. OpenLayers
             has four basic types of layers:
           </p>
-          <h3>Tile</h3>
+          <h3>useLayerTile</h3>
           <p>
             Renders sources that provide tiled images in grids that are
             organized by zoom levels for specific resolutions.
@@ -62,7 +68,7 @@ export default function OpenLayers() {
               <Link to="/open-layers/tile-xyz">XYZ Format</Link>
             </li>
           </ol>
-          <h3>Image</h3>
+          <h3>useLayerImage</h3>
           <p>
             Renders sources that provide map images at arbitrary extents and
             resolutions.
@@ -70,7 +76,7 @@ export default function OpenLayers() {
           <ol>
             <li></li>
           </ol>
-          <h3>Vector</h3>
+          <h3>useLayerVector</h3>
           <p>Renders vector data client-side.</p>
           <ol>
             <li>
@@ -84,7 +90,7 @@ export default function OpenLayers() {
               </Link>
             </li>
           </ol>
-          <h3>Vector Tile</h3>
+          <h3>useLayerVectorTile</h3>
           <p>Renders data that is provided as vector tiles.</p>
           <ol>
             <li>
@@ -95,11 +101,17 @@ export default function OpenLayers() {
         <div style={{ gridArea: "main" }} className="main">
           <Outlet />
         </div>
-        <div style={{ gridArea: "pane-right" }}>
-          <h2>Description</h2>
-          {description ? description() : "No description"}
+        <div className="pane-right">
+          {!routeDetails ? (
+            <h2>No Description</h2>
+          ) : (
+            <>
+              <h2>{routeDetails.title}</h2>
+              <h3>{routeDetails.subTitle}</h3>
+              {routeDetails.description()}
+            </>
+          )}
         </div>
-        <div style={{ gridArea: "footer" }}>footer</div>
       </div>
     </MapProvider>
   );

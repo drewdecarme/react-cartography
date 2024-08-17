@@ -2,6 +2,7 @@ import { css } from "@linaria/core";
 import { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import {
   json,
+  Link,
   Links,
   Meta,
   Outlet,
@@ -9,6 +10,7 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
+import { LayoutHeader } from "./features/LayoutHeader";
 
 const globalCSS = css`
   padding: 0;
@@ -17,8 +19,15 @@ const globalCSS = css`
   body {
     padding: 0;
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4rem 1fr auto;
+    grid-template-areas:
+      "header"
+      "main"
+      "footer";
   }
 `;
 
@@ -66,5 +75,19 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <LayoutHeader>
+        <ul>
+          <li>
+            <Link to="open-layers">Open Layers</Link>
+          </li>
+        </ul>
+      </LayoutHeader>
+      <main style={{ gridArea: "main" }}>
+        <Outlet />
+      </main>
+      <footer style={{ gridArea: "footer" }}>footer</footer>
+    </>
+  );
 }

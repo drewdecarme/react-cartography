@@ -8,6 +8,9 @@ import VectorSource from "ol/source/Vector";
 import GeoJSON from "ol/format/GeoJSON";
 import geoJsonData from "./vector-geojson.data.json";
 import { XYZ } from "ol/source";
+import { createHandle } from "../../utils/createHandle";
+import { useEffect } from "react";
+import { MetaFunction } from "@remix-run/cloudflare";
 
 const mapCSS = css`
   width: 100%;
@@ -16,8 +19,14 @@ const mapCSS = css`
   position: relative;
 `;
 
-export const handle = {
-  description: () => (
+export const meta: MetaFunction = () => {
+  return [{ title: "Vector Layer GeoJSON | Open Layers | React Cartography" }];
+};
+
+export const handle = createHandle({
+  title: "Layer - Vector",
+  subTitle: "Imports a GeoJSON file and renders the feature collection",
+  description: (
     <div>
       <p>
         This example uses 2 layers to create a map that displays the open street
@@ -32,10 +41,22 @@ export const handle = {
       </p>
     </div>
   ),
-};
+});
 
 export default function OpenLayersVectorGeoJSONFromFile() {
   const { ref, map } = useMapContext();
+
+  // once the map becomes available, zoom into the US
+  useEffect(() => {
+    if (!map) return;
+    const view = map.getView();
+
+    view.animate({
+      zoom: 4,
+      // Roughly the center of the united states
+      center: [-10854247, 4684460],
+    });
+  }, [map]);
 
   // add a background
   useMapLayerTile(map, {

@@ -1,5 +1,4 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
-import { Link } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -12,11 +11,5 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  return (
-    <ul>
-      <li>
-        <Link to="open-layers">Open Layers</Link>
-      </li>
-    </ul>
-  );
+  return <>hello moto</>;
 }
