@@ -2,7 +2,9 @@
   "name": "react-cartography",
   "version": "0.0.0",
   "description": "A collection of primitive React hooks and components that make it easy to integrate and build complex mapping solutions into your NextJS, Remix, Vite React app",
-  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

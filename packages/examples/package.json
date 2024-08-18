@@ -1,6 +1,9 @@
 {
   "name": "@react-cartography/examples",
   "version": "0.0.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "A collection of fully featured examples that supply the documentation website with it's code samples",
   "main": "index.js",
   "scripts": {

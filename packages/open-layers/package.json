@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "A collection of lower level hooks to easily integrate Open Layers into your NextJS, Remix, Vite React app",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "yarn build --watch",
     "build": "tsc --project tsconfig.build.json",
