@@ -1,6 +1,6 @@
 {
   "name": "@react-cartography/examples",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A collection of fully featured examples that supply the documentation website with it's code samples",
   "main": "index.js",
   "scripts": {
