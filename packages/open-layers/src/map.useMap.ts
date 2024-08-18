@@ -21,7 +21,7 @@ export const useMap = <T extends HTMLElement>(options?: UseMapOptions) => {
    * This is a pattern in order to get a complex singleton in React.
    */
 
-  const setMap = useCallback<RefCallback<T>>(
+  const ref = useCallback<RefCallback<T>>(
     (node) => {
       if (!node) return;
       setMapState(
@@ -73,5 +73,5 @@ export const useMap = <T extends HTMLElement>(options?: UseMapOptions) => {
     ]
   );
 
-  return { map, setMap };
+  return { map, ref };
 };

@@ -5,7 +5,7 @@ import { Map } from "ol";
 
 export type MapContextType<T extends HTMLElement = HTMLElement> = {
   map: Map | undefined;
-  setMap: RefCallback<T>;
+  ref: RefCallback<T>;
 };
 export const MapContext = React.createContext<MapContextType | null>(null);
 export type MapProviderProps = {
@@ -16,14 +16,14 @@ export function MapProvider<T extends HTMLElement>({
   children,
   options,
 }: MapProviderProps) {
-  const { map, setMap } = useMap<T>(options);
+  const { map, ref } = useMap<T>(options);
 
   const value = useMemo(
     () => ({
       map,
-      setMap,
+      ref,
     }),
-    [map, setMap]
+    [map, ref]
   );
 
   return <MapContext.Provider value={value}>{children}</MapContext.Provider>;

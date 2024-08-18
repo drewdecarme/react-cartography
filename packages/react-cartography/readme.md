@@ -1,5 +1,5 @@
 <h1 align="center" style="padding-bottom: 30px">
-  <img align="center" width="50%" src="./assets/react-cartography-logo.webp" style="margin: 0 auto; border-radius: 2rem;"/>
+  <img align="center" width="50%" src="../../assets/react-cartography-logo.webp" style="margin: 0 auto; border-radius: 2rem;"/>
   <br></br>
   <div>React Cartography</div>
 </h1 >
