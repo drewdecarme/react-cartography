@@ -46,19 +46,7 @@ export const handle = createHandle({
 export default function OpenLayersVectorGeoJSONFromFile() {
   const { ref, map } = useMapContext();
 
-  // once the map becomes available, zoom into the US
-  useEffect(() => {
-    if (!map) return;
-    const view = map.getView();
-
-    view.animate({
-      zoom: 4,
-      // Roughly the center of the united states
-      center: [-10854247, 4684460],
-    });
-  }, [map]);
-
-  // add a background
+  // Add a background, Open Street Map!
   useMapLayerTile(map, {
     className: "background",
     source: new XYZ({
@@ -66,17 +54,27 @@ export default function OpenLayersVectorGeoJSONFromFile() {
     }),
   });
 
-  // add the json data and project it
+  // Add some GeoJSON into the mix
   useMapLayerVector(map, {
     className: "vector",
     source: new VectorSource({
       features: new GeoJSON({
-        // All feature should be projected as Spherical Mercator (EPSG:3857)
-        featureProjection: "EPSG:3857",
+        featureProjection: "EPSG:3857", // All feature should be projected as Spherical Mercator (EPSG:3857)
         dataProjection: "EPSG:4326",
       }).readFeatures(geoJsonData),
     }),
   });
+
+  // Once the map becomes available, zoom into the US
+  useEffect(() => {
+    if (!map) return;
+    const view = map.getView();
+
+    view.animate({
+      zoom: 4,
+      center: [-10854247, 4684460], // Roughly the center of the united states
+    });
+  }, [map]);
 
   return <div ref={ref} className={mapCSS} />;
 }

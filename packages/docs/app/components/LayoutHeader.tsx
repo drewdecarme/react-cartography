@@ -1,4 +1,5 @@
 import { css } from "@linaria/core";
+import { Link } from "@remix-run/react";
 import { ReactNode } from "react";
 
 const className = css`
@@ -28,7 +29,7 @@ const className = css`
     width: 32px;
   }
 
-  div:first-child {
+  a:first-child {
     display: flex;
     align-items: center;
     height: 100%;
@@ -57,13 +58,13 @@ const className = css`
 export function LayoutHeader({ children }: { children: ReactNode }) {
   return (
     <header className={className}>
-      <div>
+      <Link to="/">
         <img
           src="/react-cartography-logo-transparent.png"
           alt="react-cartography-logo"
         />
         <h1>React Cartography</h1>
-      </div>
+      </Link>
       <div>{children}</div>
       <div>
         <a

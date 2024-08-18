@@ -1869,6 +1869,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@shikijs/core@npm:1.14.1":
+  version: 1.14.1
+  resolution: "@shikijs/core@npm:1.14.1"
+  dependencies:
+    "@types/hast": "npm:^3.0.4"
+  checksum: 10c0/a9779634956010788f346f779a8e445d17101cae64e6769a7a4d6d479ccd5d47e6c897fd7a57445cea6b64f1b79f1126ff4f57dbc6ce28c1533f6b74450d752f
+  languageName: node
+  linkType: hard
+
 "@swc/core-darwin-arm64@npm:1.7.11":
   version: 1.7.11
   resolution: "@swc/core-darwin-arm64@npm:1.7.11"
@@ -2092,6 +2101,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/hast@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "@types/hast@npm:3.0.4"
+  dependencies:
+    "@types/unist": "npm:*"
+  checksum: 10c0/3249781a511b38f1d330fd1e3344eed3c4e7ea8eff82e835d35da78e637480d36fad37a78be5a7aed8465d237ad0446abc1150859d0fde395354ea634decf9f7
+  languageName: node
+  linkType: hard
+
 "@types/json-schema@npm:^7.0.12":
   version: 7.0.15
   resolution: "@types/json-schema@npm:7.0.15"
@@ -2177,6 +2195,13 @@ __metadata:
   version: 7.5.8
   resolution: "@types/semver@npm:7.5.8"
   checksum: 10c0/8663ff927234d1c5fcc04b33062cb2b9fcfbe0f5f351ed26c4d1e1581657deebd506b41ff7fdf89e787e3d33ce05854bc01686379b89e9c49b564c4cfa988efa
+  languageName: node
+  linkType: hard
+
+"@types/unist@npm:*":
+  version: 3.0.3
+  resolution: "@types/unist@npm:3.0.3"
+  checksum: 10c0/2b1e4adcab78388e088fcc3c0ae8700f76619dbcb4741d7d201f87e2cb346bfc29a89003cfea2d76c996e1061452e14fcd737e8b25aacf949c1f2d6b2bc3dd60
   languageName: node
   linkType: hard
 
@@ -3283,6 +3308,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"clsx@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "clsx@npm:2.1.1"
+  checksum: 10c0/c4c8eb865f8c82baab07e71bfa8897c73454881c4f99d6bc81585aecd7c441746c1399d08363dc096c550cceaf97bd4ce1e8854e1771e9998d9f94c4fe075839
+  languageName: node
+  linkType: hard
+
 "color-convert@npm:^1.9.0":
   version: 1.9.3
   resolution: "color-convert@npm:1.9.3"
@@ -3754,6 +3786,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^6.7.4"
     "@wyw-in-js/vite": "npm:^0.5.4"
     autoprefixer: "npm:^10.4.19"
+    clsx: "npm:^2.1.1"
     eslint: "npm:^8.38.0"
     eslint-import-resolver-typescript: "npm:^3.6.1"
     eslint-plugin-import: "npm:^2.28.1"
@@ -3765,7 +3798,9 @@ __metadata:
     postcss: "npm:^8.4.38"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    shiki: "npm:^1.14.1"
     tailwindcss: "npm:^3.4.4"
+    ts-pattern: "npm:^5.3.1"
     typescript: "npm:^5.1.6"
     vite: "npm:^5.1.0"
     vite-tsconfig-paths: "npm:^4.2.1"
@@ -8921,6 +8956,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"shiki@npm:^1.14.1":
+  version: 1.14.1
+  resolution: "shiki@npm:1.14.1"
+  dependencies:
+    "@shikijs/core": "npm:1.14.1"
+    "@types/hast": "npm:^3.0.4"
+  checksum: 10c0/756f45917f281e158eef114b985b9a4cae9f0470f955e2f96f4473a3aed327dc1d653b9bd6280eb28398bd0da6d533caa4fce61b716c1263c5d85df53964ade2
+  languageName: node
+  linkType: hard
+
 "side-channel@npm:^1.0.4, side-channel@npm:^1.0.6":
   version: 1.0.6
   resolution: "side-channel@npm:1.0.6"
@@ -9533,6 +9578,13 @@ __metadata:
   dependencies:
     tslib: "npm:^2.1.0"
   checksum: 10c0/2fbc178d5903d325ee0b87fad38827eac11888b6e86979b06754fd4bcdcf44c2a99b8bcd5d59d149c0464ede55ae810b02a2aee6835ad10efe4dd0e22efd68c0
+  languageName: node
+  linkType: hard
+
+"ts-pattern@npm:^5.3.1":
+  version: 5.3.1
+  resolution: "ts-pattern@npm:5.3.1"
+  checksum: 10c0/4d5082edb2d0a198a4f46abc834317fa2be616277be7721df71a93ea33180b85443ae2e92ff28a0cda51f038b5e347b35ad79936a55ed468e23268fbc48503a1
   languageName: node
   linkType: hard
 

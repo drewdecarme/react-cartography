@@ -2,20 +2,29 @@ import { css } from "@linaria/core";
 import { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import {
   json,
-  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useLocation,
+  useNavigate,
 } from "@remix-run/react";
-import { LayoutHeader } from "./features/LayoutHeader";
+import { LayoutHeader } from "./components/LayoutHeader";
+import { ChangeEventHandler, useCallback } from "react";
+import { InputSelect } from "./components/InputSelect";
+import { match, P } from "ts-pattern";
+import { LayoutFooter } from "./components/LayoutFooter";
 
 const globalCSS = css`
+  &:root {
+    --font-family: "Source Sans Pro", sans-serif;
+  }
   padding: 0;
   margin: 0;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--font-family);
+
   body {
     padding: 0;
     margin: 0;
@@ -75,19 +84,38 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const onChange = useCallback<ChangeEventHandler<HTMLSelectElement>>(
+    ({ currentTarget: { value } }) => {
+      navigate(value);
+    },
+    [navigate]
+  );
+
   return (
     <>
       <LayoutHeader>
-        <ul>
-          <li>
-            <Link to="open-layers">Open Layers</Link>
-          </li>
-        </ul>
+        <InputSelect
+          value={match(pathname)
+            .with(
+              P.when((path) => path.includes("open-layers")),
+              () => "open-layers"
+            )
+            .otherwise(() => "")}
+          onChange={onChange}
+        >
+          <option value="" disabled>
+            Select a mapping library
+          </option>
+          <option value="open-layers">Open Layers</option>
+        </InputSelect>
       </LayoutHeader>
       <main style={{ gridArea: "main" }}>
         <Outlet />
       </main>
-      <footer style={{ gridArea: "footer" }}>footer</footer>
+      <LayoutFooter />
     </>
   );
 }

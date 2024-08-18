@@ -1,4 +1,7 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
+import { json, type MetaFunction } from "@remix-run/cloudflare";
+import { Hero } from "../components/Hero";
+import { codeToHtml } from "shiki";
+import Example from "../examples/open-layers.layer-tile.osm";
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,6 +13,18 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader = async () => {
+  const highlightedCode = await codeToHtml(Example.toString(), {
+    lang: "typescript",
+    theme: "dark-plus",
+  });
+  return json({ highlightedCode });
+};
+
 export default function Index() {
-  return <>hello moto</>;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 }
