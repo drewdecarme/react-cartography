@@ -1,0 +1,63 @@
+---
+meta:
+  - title: React Cartography
+  - name: description
+    content: A collection of React hooks and components to easily integrate different mapping libraries into your NextJS, Remix, Vite React app
+headers:
+  Cache-Control: no-cache
+---
+
+import { Hero } from "../components/Hero";
+import { PageSection } from "../components/PageSection";
+
+<Hero />
+<PageSection
+  title="If you know hooks, you know maps"
+  subTitle="React Cartography supplies hooks that interface the imperative APIs of modern open source mapping libraries. Simply import the hooks and supply some options to get your maps up and running."
+>
+
+</PageSection>
+
+```tsx
+import {
+  MapProvider,
+  useMapContext,
+  useMapLayerTile,
+} from "react-cartography/ol";
+import { ReactNode } from "react";
+import SourceXYZ from "ol/source/XYZ";
+
+function MapWrapper(props: { children: ReactNode }) {
+  return <MapProvider>{props.children}</MapProvider>;
+}
+
+function Map() {
+  const { ref, map } = useMapContext();
+
+  useMapLayerTile(map, {
+    className: "background",
+    source: new SourceXYZ({
+      url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    }),
+  });
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        width: "100%",
+        height: "100%",
+        background: "#f8f8f8",
+      }}
+    />
+  );
+}
+
+export default function Example() {
+  return (
+    <MapWrapper>
+      <Map />
+    </MapWrapper>
+  );
+}
+```

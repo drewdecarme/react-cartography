@@ -5,6 +5,9 @@ import {
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import linaria from "@wyw-in-js/vite";
+import mdx from "@mdx-js/rollup";
+import rehypeShiki from "@shikijs/rehype";
+import remarkFrontmatter from "remark-frontmatter";
 
 export default defineConfig({
   plugins: [
@@ -13,6 +16,17 @@ export default defineConfig({
       babelOptions: {
         presets: ["@babel/preset-typescript", "@babel/preset-react"],
       },
+    }),
+    mdx({
+      remarkPlugins: [remarkFrontmatter],
+      rehypePlugins: [
+        [
+          rehypeShiki,
+          {
+            theme: "dark-plus",
+          },
+        ],
+      ],
     }),
     remixCloudflareDevProxy(),
     remix({

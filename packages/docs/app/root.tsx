@@ -38,6 +38,11 @@ const globalCSS = css`
       "main"
       "footer";
   }
+
+  .shiki {
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
 `;
 
 export const loader = async ({ context }: LoaderFunctionArgs) => {

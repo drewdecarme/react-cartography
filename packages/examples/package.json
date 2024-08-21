@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/drewdecarme/react-cartography#readme",
   "dependencies": {
-    "react-cartography": "workspace:^"
+    "react-cartography": "workspace:"
   }
 }

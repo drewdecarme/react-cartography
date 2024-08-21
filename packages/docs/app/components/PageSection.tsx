@@ -3,13 +3,13 @@ import { ReactNode } from "react";
 
 const sectionStyle = css`
   max-width: 1024px;
-  text-align: center;
   margin: 5rem auto;
   h1,
   h2 {
     margin-left: auto;
     margin-right: auto;
     max-width: 80%;
+    text-align: center;
   }
   h1 {
     font-size: 54px;
@@ -22,6 +22,11 @@ const sectionStyle = css`
   }
   .content {
     margin-top: 2rem;
+  }
+
+  & + .shiki {
+    width: 50%;
+    margin: 0 auto;
   }
 `;
 
