@@ -1,7 +1,7 @@
-import { RefCallback, useCallback, useState } from "react";
-import { Map, View } from "ol";
+import { Map as OLMap, View } from "ol";
 import { defaults as ControlDefaults } from "ol/control";
 import { defaults as InteractionDefaults } from "ol/interaction";
+import { type RefCallback, useCallback, useState } from "react";
 
 export type UseMapOptions = {
   interactionOptions?: typeof InteractionDefaults;
@@ -10,7 +10,7 @@ export type UseMapOptions = {
 };
 
 export const useMap = <T extends HTMLElement>(options?: UseMapOptions) => {
-  const [map, setMapState] = useState<Map | undefined>(undefined);
+  const [map, setMapState] = useState<OLMap | undefined>(undefined);
 
   /**
    * Due to SSR restrictions and the document not existing, we need to use a
@@ -25,7 +25,7 @@ export const useMap = <T extends HTMLElement>(options?: UseMapOptions) => {
     (node) => {
       if (!node) return;
       setMapState(
-        new Map({
+        new OLMap({
           interactions: InteractionDefaults({
             altShiftDragRotate: false,
             shiftDragZoom: false,
@@ -65,12 +65,7 @@ export const useMap = <T extends HTMLElement>(options?: UseMapOptions) => {
         })
       );
     },
-    [
-      options?.controlOptions,
-      options?.interactionOptions,
-      options?.viewOptions,
-      setMapState,
-    ]
+    [options?.controlOptions, options?.interactionOptions, options?.viewOptions]
   );
 
   return { map, ref };
