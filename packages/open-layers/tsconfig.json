@@ -19,5 +19,9 @@
     /* React */
     "jsx": "react-jsx"
   },
-  "include": ["src", "tsconfig.build.json"]
+  "include": [
+    "src",
+    "tsconfig.build.json",
+    "../docs/app/routes/Basic.stories.tsx"
+  ]
 }

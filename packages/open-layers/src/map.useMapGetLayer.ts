@@ -1,5 +1,5 @@
-import { type Map } from "ol";
-import BaseLayer from "ol/layer/Base";
+import type { Map as OlMap } from "ol";
+import type BaseLayer from "ol/layer/Base";
 import { useCallback, useRef } from "react";
 import { getLayerByClassName } from "./utils/map.util.getLayerByClassName";
 
@@ -12,7 +12,7 @@ import { getLayerByClassName } from "./utils/map.util.getLayerByClassName";
  * This hook will always return an instance of a layer.
  */
 export const useMapGetLayer = <T extends BaseLayer>(
-  map: Map | undefined,
+  map: OlMap | undefined,
   options: { initLayer: T }
 ) => {
   const layerRef = useRef<T>(options.initLayer);

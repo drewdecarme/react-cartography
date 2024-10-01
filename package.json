@@ -24,5 +24,6 @@
   "dependencies": {
     "@changesets/cli": "^2.27.7",
     "@react-cartography/ol": "workspace:^"
-  }
+  },
+  "packageManager": "yarn@4.5.0"
 }

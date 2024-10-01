@@ -1,10 +1,10 @@
-import React, { RefCallback } from "react";
+import type { Map as OlMap } from "ol";
+import React, { type RefCallback } from "react";
 import { type ReactNode, useMemo } from "react";
-import { useMap, UseMapOptions } from "./map.useMap";
-import { Map } from "ol";
+import { type UseMapOptions, useMap } from "./map.useMap";
 
 export type MapContextType<T extends HTMLElement = HTMLElement> = {
-  map: Map | undefined;
+  map: OlMap | undefined;
   ref: RefCallback<T>;
 };
 export const MapContext = React.createContext<MapContextType | null>(null);
