@@ -1,7 +1,7 @@
 import type { Map as OLMap } from "ol";
 import Draw, { type Options } from "ol/interaction/Draw";
 import type TileLayer from "ol/layer/Tile";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function useInteractionDraw<T extends TileLayer>(
   map: OLMap | undefined,
@@ -9,24 +9,23 @@ export function useInteractionDraw<T extends TileLayer>(
   type: Options["type"],
   options?: Omit<Options, "type">
 ) {
-  const memoOptions = useMemo(() => options, [options]);
-  const [interaction, setInteraction] = useState<Draw | undefined>();
+  const drawRef = useRef(new Draw({ type, ...(options ?? {}) }));
+  const [interaction, setInteraction] = useState<Draw | undefined>(undefined);
 
   useEffect(() => {
     const layerSource = layer.getSource();
     if (!layerSource || !map) return;
 
-    const draw = new Draw({ type, ...(memoOptions ?? {}) });
-    setInteraction(draw);
+    setInteraction(drawRef.current);
     console.log("adding draw");
-    map.addInteraction(draw);
+    map.addInteraction(drawRef.current);
 
     return () => {
-      if (!draw) return;
+      if (!drawRef.current) return;
       console.log("removing draw");
-      map.removeInteraction(draw);
+      map.removeInteraction(drawRef.current);
     };
-  }, [map, layer, memoOptions, type]);
+  }, [map, layer]);
 
   return interaction;
 }

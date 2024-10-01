@@ -25,6 +25,7 @@ export default () => {
   // to GE
   useEffect(() => {
     if (!draw) return;
+    console.log("The draw interaction is available... let's do stuff!");
     draw.on("drawend", (event) => {
       alert(
         "You just finished your drawing! The results of your feature are in the console."
@@ -35,6 +36,8 @@ export default () => {
       // Output the GeoJSON to the console or use it as needed
       console.log("GeoJSON Object:", geoJSONObject);
       console.log("GeoJSON String:", JSON.stringify(geoJSONObject, null, 2));
+
+      // at this point you can launch a modal or run a handler or whatever.
     });
   }, [draw]);
 
