@@ -1,5 +1,5 @@
 import type { Meta } from "@storybook/react";
-import UseInteractionDrawExample from "./UseInteractionDraw.example";
+import UseInteractionDrawOnExistingLayer from "./UseInteractionDrawOnExistingLayer.example";
 
 const meta: Meta = {
   title: "OpenLayers / Hooks / useInteractionDraw",
@@ -7,4 +7,4 @@ const meta: Meta = {
 
 export default meta;
 
-export const Basic = UseInteractionDrawExample;
+export const OnExistingLayer = UseInteractionDrawOnExistingLayer;

@@ -4,7 +4,7 @@ import { useMapContext, useMapLayerTile } from "react-cartography/ol";
 export default () => {
   const { ref, map } = useMapContext();
 
-  useMapLayerTile(map, {
+  const layer = useMapLayerTile(map, {
     className: "xyz",
     source: new SourceXYZ({
       url: "https://naturalearthtiles.roblabs.com/tiles/natural_earth_cross_blended_hypso_shaded_relief.raster/{z}/{x}/{y}.png",

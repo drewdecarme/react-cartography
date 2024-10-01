@@ -5,3 +5,6 @@ export * from "./map.useMapGetLayer";
 export * from "./map.useMapLayerTile";
 export * from "./map.useMapLayerVector";
 export * from "./map.useMapLayerVectorTile";
+
+// interactions
+export * from "./map.useInteractionDraw";
