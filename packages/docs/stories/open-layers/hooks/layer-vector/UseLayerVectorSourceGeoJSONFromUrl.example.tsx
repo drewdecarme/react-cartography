@@ -1,17 +1,16 @@
-import format from "ol/format";
-import source from "ol/source";
+import { GeoJSON as FormatGeoJSON } from "ol/format";
+import { Vector as SourceVector } from "ol/source";
 import { useMapContext, useMapLayerVector } from "react-cartography/ol";
-import geoJsonData from "./vector-geojson.data.json";
 
 export default () => {
   const { ref, map } = useMapContext();
 
   useMapLayerVector(map, {
-    className: "geo-json-from-file",
+    className: "geo-json-from-url",
     background: "#1a2b39",
-    source: new source.Vector({
+    source: new SourceVector({
       url: "https://openlayers.org/data/vector/ecoregions.json",
-      format: new format.GeoJSON(),
+      format: new FormatGeoJSON(),
     }),
     style: {
       "fill-color": ["string", ["get", "COLOR"], "#eee"],

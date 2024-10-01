@@ -1,4 +1,4 @@
-import source from "ol/source";
+import { XYZ as SourceXYZ } from "ol/source";
 import { useMapContext, useMapLayerTile } from "react-cartography/ol";
 
 export default () => {
@@ -6,7 +6,7 @@ export default () => {
 
   useMapLayerTile(map, {
     className: "xyz",
-    source: new source.XYZ({
+    source: new SourceXYZ({
       url: "https://naturalearthtiles.roblabs.com/tiles/natural_earth_cross_blended_hypso_shaded_relief.raster/{z}/{x}/{y}.png",
     }),
   });

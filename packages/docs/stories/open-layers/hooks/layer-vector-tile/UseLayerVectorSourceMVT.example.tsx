@@ -1,5 +1,5 @@
-import format from "ol/format";
-import source from "ol/source";
+import { MVT as FormatMVT } from "ol/format";
+import { VectorTile as SourceVectorTile } from "ol/source";
 import { useMapContext, useMapLayerVectorTile } from "react-cartography/ol";
 
 export default () => {
@@ -7,11 +7,9 @@ export default () => {
 
   useMapLayerVectorTile(map, {
     className: "vector-tiles",
-    source: new source.VectorTile({
-      format: new format.MVT(),
-      url: `https://{a-d}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/{z}/{x}/{y}.vector.pbf?access_token=${getEnvVar(
-        "MAPBOX_TOKEN"
-      )}`,
+    source: new SourceVectorTile({
+      format: new FormatMVT(),
+      url: "https://{a-d}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/{z}/{x}/{y}.vector.pbf?access_token=pk.eyJ1IjoiZHJld2RlY2FybWVwZXJzb25hbCIsImEiOiJjbHp2NXNjeWwwMjAyMnFvZHlpNmo3emRzIn0.gOxJlDUVvc8K3ezaBuiDPQ",
     }),
   });
 

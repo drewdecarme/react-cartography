@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/drewdecarme/react-layers#readme",
   "dependencies": {
-    "@changesets/cli": "^2.27.7",
+    "@changesets/cli": "^2.27.8",
     "@react-cartography/ol": "workspace:^"
   },
   "packageManager": "yarn@4.5.0"
